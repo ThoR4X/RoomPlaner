@@ -145,6 +145,11 @@ function followURL(url,id) {
   return;
 }
 
+function openWindow(url) {
+  window.open(url,'_blank','toolbar=no,scrollbars=yes,resizable=yes,top=50,left=350,width=1024,height=800');
+  return;
+}
+
 function switchActiveSub(id) {
   $('.subtab#active').attr('id','');
   $('li[name="'+id+'"]').attr('id','active');
@@ -429,7 +434,7 @@ function addRoom () {
   }
   if($('tr.newRoom').length < 5){
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
-    var newRoom = $( '<tr class="newRoom" id="newRoom_'+i+'"><td><input type="text" id="newName_'+i+'" title="Anzeige-Name" maxlength="20" class="hiddenInput" value="" placeholder="Neuer Zimmer" name="roomName" required /></td><td><input id="roomType" type="text" class="hiddenInput" maxlength="2" value="" placeholder="Art" name="newType_'+i+'" title="Zimmer-Art" /></td><td><input id="roomPrice" type="text" class="hiddenInput" value="" placeholder="Preis" name="newPrice_'+i+'" title="Preis pro Nacht" /></td><td><center><input title="Anzeige-Farbe" id="roomColor" name="newColor_'+i+'" class="jscolor" value="#'+randomColor+'" readonly /></center></td><td><center><div title="Entfernen" class="removeicon" onclick="remRow(\''+i+'\');"></div></center></td></tr>' );
+    var newRoom = $( '<tr class="newRoom" id="newRoom_'+i+'"><td><input type="text" id="newName_'+i+'" title="Anzeige-Name" maxlength="20" class="hiddenInput" value="" placeholder="Neues Zimmer" name="roomName" required /></td><td><input id="roomType" type="text" class="hiddenInput" maxlength="2" value="" placeholder="Art" name="newType_'+i+'" title="Zimmer-Art" /></td><td><input id="roomPrice" type="text" class="hiddenInput" value="" placeholder="Preis" name="newPrice_'+i+'" title="Preis pro Nacht" /></td><td><center><input title="Anzeige-Farbe" id="roomColor" name="newColor_'+i+'" class="jscolor" value="#'+randomColor+'" readonly /></center></td><td><center><div title="Entfernen" class="removeicon" onclick="remRow(\''+i+'\');"></div></center></td></tr>' );
     $( 'table#manageRooms' ).append( newRoom );
     $( 'span.anouncement' ).html( '&Auml;nderungen wurden noch nicht gespeichert' );
   }

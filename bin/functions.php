@@ -265,7 +265,8 @@ function generateNavi($active) {
 			<a href="index.php?site=guests"><li id="'.$active[2].'">G&auml;ste</li></a>
       <a href="index.php?site=settings"><li id="'.$active[4].'">Einstellungen</li></a>
     </ul>
-    <div id="logoutButton" title="Logout" onclick="followURL(\'index.php?fct=logout\');"></div>
+		<div id="logoutButton" title="Logout" onclick="followURL(\'index.php?fct=logout\');"></div>
+		<div id="helpButton" title="Hilfe" onclick="openWindow(\'index.php?fct=help\');"></div>
   </div>';
 }
 
@@ -657,9 +658,9 @@ function editSettings () {
 	echo "<script type=\"text/javascript\">getUsers();</script>";
 	echo '</table></div>';
 
-	echo '<div id="subcontent_2" class="adminOption" style="display: none;">
-					TestyMCTest
-				</div>';
+	echo '<div id="subcontent_2" class="adminOption" style="display: none;">';
+					swInfo();
+	echo '</div>';
 }
 
 /* Check-In Panel */
@@ -695,6 +696,22 @@ function checkinPanel() {
 	<div id="subcontent_4" class="adminOption" style="display: none;">
 		Archiv
 	</div>';
+}
+
+function getHelp($lang){
+	echo 'this help is in language '.$lang;
+	header( 'Location: bin/help/'.$lang.'/index.php' );
+	return;
+}
+
+function swInfo(){
+	echo '<span class="headline1">Aktuelle Version: <i>undefined</i></span><br /><br />';
+	echo '<span class="headline2">Änderungen in dieser Version</span><br />
+				<ul>
+					<li>Hilfe hinzugefügt</li>
+					<li>Versions-Historie begonnen</li>
+				</ul>
+	';
 }
 
 ?>

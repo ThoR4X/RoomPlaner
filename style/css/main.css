@@ -62,6 +62,30 @@ h1 {
   user-select: none;
 }
 
+.headline1 {
+	color: #689831;
+	font-size: 24pt;
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
+.headline2 {
+	color: #689831;
+	font-size: 18pt;
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.headline3 {
+	font-size: 14pt;
+	color: #689831;
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
 .mainSpan {
   color: #689831;
   font-weight: bold;
@@ -372,6 +396,17 @@ input[type="checkbox"]:checked + label #checkbox {
   height: 24px;
   background-image: url(../images/logout.png);
   background-size: 24px auto;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.navigation > #helpButton {
+  float: right;
+  margin-right: 20px;
+  width: 26px;
+  height: 26px;
+  background-image: url(../images/mastericons/help.png);
+  background-size: 26px auto;
   background-repeat: no-repeat;
   cursor: pointer;
 }
