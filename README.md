@@ -2,10 +2,26 @@
 created by ThoR4X and licensed under GNU General Public License V3
 # Description: 
 Manage your hotel rooms and guests on web
+
 # Available languages by now: 
 German
+
+#How to start
+- copy the files to a webserver
+- open up the index.php
+- default user-credentials are user: <b>admin</b> password: <b>Asd123!.</b>
+
+
+#Last changes
+- help added in language german
+- version history added
+
+
+#currently working on
+- adding feature for check-in and -out
+
+
 #Expansion-Plans
 - adding english language
-- adding feature for check-in and -out
 - adding billing feature
 - adding a listing of possible optional benefits
