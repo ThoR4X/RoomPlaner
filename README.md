@@ -18,7 +18,7 @@ German
 
 
 #currently working on
-- adding feature for check-in and -out
+- adding feature for check-in and -out + archive
 
 
 #Expansion-Plans
