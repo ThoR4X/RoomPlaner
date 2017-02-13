@@ -98,7 +98,12 @@ if ( logged_in() ) {
     }
 
     else if($currentpage == 'settings'){
-      editSettings();
+      if(checkAdmin($_SESSION['knownUser'])){
+        editSettings();
+      }
+      else {
+        echo '<center><img src="style/images/na.png" /><br />Noch keine Benutzer-Einstellungen vorhanden</center>';
+      }
     }
     else if($currentpage == '404'){
       echo '<center><img src="style/images/na.png" /><br />Seite nicht vorhanden</center>';
@@ -114,6 +119,9 @@ if ( logged_in() ) {
     <div class="footer">';
     if($currentpage == 'main'){
       occupancyAdder();
+    }
+    else if($currentpage == 'settings'){
+      donateButton();
     }
   echo '</div>
   ';

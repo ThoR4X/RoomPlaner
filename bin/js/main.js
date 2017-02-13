@@ -847,7 +847,8 @@ function deleteUser(id, user) {
           /*addLog('Letzter Benutzer mit Admin-Rechten "'+user+'" wurde versucht zu entfernen.');*/
         }
         else if(output == '1') {
-          location.reload();
+          alert(unescape('Benutzer "'+user+'" erfolgreich gel%F6scht.'));
+          location.reload(true);
           /*addLog('Benutzer "'+user+'" wurde entfernt.');*/
         }
         else {
@@ -859,7 +860,9 @@ function deleteUser(id, user) {
 }
 
 function editUser(id, user) {
-  alert(user+' soll editiert werden.');
+  windowOverlay();
+  var myContent = '<center><span class="mainSpan">Benutzer bearbeiten</span></center><br /><br /><form action="bin/handleUsers.php" method="post" id="addUser" onsubmit="return checkSubmit()"><input type="text" class="definput" placeholder="Benutzername" id="userName" name="userName" value="'+user+'" required /><br /><br /><div id="checkboxholder"><input type="checkbox" id="c2" value="true" name="pwd" /><label for="c2"><span id="checkbox"></span><span style="font-size: 14px;">Kennwort zur&uuml;cksetzen</span></label><br /><br /><input type="checkbox" id="c1" value="true" name="admin" /><label for="c1"><span id="checkbox"></span><span style="font-size: 14px;">Administrator</span></label></div><br /><br /><input type="hidden" name="action" value="edit" /><input type="hidden" name="userID" value="'+id+'" /><input type="submit" class="defButton" value="Speichern"/>';
+  $('div.windowOverlay').append(myContent);
 }
 
 function getUsers(){

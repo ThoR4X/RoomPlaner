@@ -83,4 +83,45 @@ else if($action == 'add'){
   return;
 }
 
+else if($action == 'edit'){
+  $userID = $_POST['userID'];
+  $userName = $_POST['userName'];
+  $userPass = 0;
+
+  if($_POST['admin'] == 'true'){
+    $myState = 'admin';
+  }
+
+  else {
+    $myState = 'user';
+  }
+
+  if($_POST['pwd'] == 'true'){
+    $userPass = 'Start#123';
+    $mySalt = randomstring();
+    $myPepper = randomstring();
+    $myCrypt = HashCalc($mySalt,$myPepper,$userPass);
+  }
+
+  $user_array = array();
+  $user_array = json_decode(file_get_contents($filePath), true);
+
+  foreach ($user_array as $key => $element) {
+    if ($element['id'] == $userID) {
+      $user_array[$key]['user'] = $userName;
+      $user_array[$key]['state'] = $myState;
+      if(isset($myCrypt)){
+        $user_array[$key]['cryptKey'] = $myCrypt;
+        $user_array[$key]['salt'] = $mySalt;
+        $user_array[$key]['pepper'] = $myPepper;
+      }
+    }
+  }
+
+  file_put_contents($filePath, json_encode($user_array));
+  unset($user_array);
+  header("location: ../index.php?site=settings");
+  return;
+}
+
 ?>

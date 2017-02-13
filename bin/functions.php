@@ -320,8 +320,24 @@ function getIndex($id, $array){
     return null;
 }
 
-function checkUser($user) {
+function checkAdmin($user) {
+	$data = array();
+  $data = json_decode(file_get_contents('bin/users.json'), true);
+	$isAdmin = false;
+  foreach($data as $element){
+    if($element['user'] == $user){
+			if($element['state'] == 'admin'){
+				$isAdmin = true;
+				unset($data);
+				return $isAdmin;
+			}
+    }
+  }
+  unset($data);
+	return $isAdmin;
+}
 
+function checkUser($user) {
   $data = array();
   $data = json_decode(file_get_contents('bin/users.json'), true);
 	$isUser = false;
@@ -708,9 +724,21 @@ function swInfo(){
 	echo '<span class="headline1">Aktuelle Version: <i>undefined</i></span><br /><br />';
 	echo '<span class="headline2">Änderungen in dieser Version</span><br />
 				<ul>
+					<li>Paypal Donate-Button auf Einstellungs-Seite eingefügt</li>
+					<li>Benutzer ohne Admin-Rechte sehen keine Einstellungen mehr</li>
+					<li>Benutzer lassen sich nun bearbeiten</li>
 					<li>Hilfe hinzugefügt</li>
 					<li>Versions-Historie begonnen</li>
-				</ul>
+				</ul>';
+}
+
+function donateButton() {
+	echo'
+		<center><div class="donateButton" title="Wenn dir RoomPlaner gefällt, unterstütze mich" onclick="openWindow(\'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2T2PMHCZ5EZ7N\')">
+			<div id="sym"></div>
+			<div id="text"><center>donate</center></div>
+			<div class="clear"></div>
+		</div></center>
 	';
 }
 
