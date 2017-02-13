@@ -13,6 +13,8 @@ German
 
 
 #Last changes
+- made admin-settings unvisible for normal users
+- made users editable
 - help added in language german
 - version history added
 
